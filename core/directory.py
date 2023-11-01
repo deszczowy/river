@@ -1,6 +1,6 @@
 import os
 
-class Directory:
+class RDirectory:
     def __init__(self):
         self.root = os.getcwd()
         self.projects = full_path = os.path.join(self.root, "projects") # todo: read from config. if not present - create like this

@@ -1,27 +1,27 @@
 import os
 
-from directory import Directory
-from file import File
+from core.directory import RDirectory
+from core.file import RFile
 from enum import Enum
 
 empty_header = """title=
 author=
 overview="""
 
-class ProjectFile(Enum):
+class EnProjectFile(Enum):
     Header = 0
     Flow = 1
     Note = 2
 
-class Project:
+class RProject:
     def __init__(self):
-        self.directory = Directory()
-        self.file = File()
+        self.directory = RDirectory()
+        self.file = RFile()
         self.path = ""
         self.fileNames = {
-            ProjectFile.Header: "header.rvr",
-            ProjectFile.Flow: "main.rvr",
-            ProjectFile.Note: "notes.rvr"
+            EnProjectFile.Header: "header.rvr",
+            EnProjectFile.Flow: "main.rvr",
+            EnProjectFile.Note: "notes.rvr"
         }
         
     def load_project(self, name):
@@ -30,7 +30,7 @@ class Project:
         self.check_structure()
         
     def check_structure(self):
-        for item in ProjectFile:
+        for item in EnProjectFile:
             self.check_if_file_present(item)
         
     def get_file_name(self, kind):
@@ -48,13 +48,13 @@ class Project:
         return True
 
     def create_file(self, kind):
-        if kind == ProjectFile.Header:
+        if kind == EnProjectFile.Header:
             self.create_header()
         else:
             self.create_empty_file(kind)
 
     def create_header(self):
-        name = self.get_file_name(ProjectFile.Header)
+        name = self.get_file_name(EnProjectFile.Header)
         self.file.create(name, empty_header)
 
     def create_empty_file(self, kind):
@@ -68,9 +68,3 @@ class Project:
     def set(self, kind, content):
         file = self.get_file_name(kind)
         return self.file.save_content(file, content)
-
-p = Project()
-p.load_project("test4")
-print(p.get(ProjectFile.Header))
-p.set(ProjectFile.Note, "Test")
-print(p.get(ProjectFile.Note))

@@ -1,6 +1,6 @@
 import os
 
-class File:
+class RFile:
     def __init__(self):
         self.root = ""
     
