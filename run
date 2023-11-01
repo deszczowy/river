@@ -1,5 +1,5 @@
 rm ./dist/*
-rm ./app
-python3 -m PyInstaller --clean --onefile -w --icon=resources/icon.png app.py
-cp ./dist/app ./
-./app
+rm ./River
+python3 -m PyInstaller --clean --onefile -w --icon=resources/icon.png River.py
+cp ./dist/River ./
+./River

@@ -1,6 +1,7 @@
 # Project related
 app.config
 test.py
+River
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
