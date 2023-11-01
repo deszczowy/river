@@ -1,6 +1,6 @@
 from pathlib import Path
 
-class Config:
+class RConfig:
 
     def __init__(self):
         self.settings = dict([])

@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QTimer
 
-class Timer:
+class RTimer:
 
     scheduled_method = None
     timeout_method = None

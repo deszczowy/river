@@ -56,7 +56,7 @@ class RMainWindow(QWidget):
     def fill_statusbar(self):
         self.statusbar.set_content("PROJECT", "Informacja o projekcie")
         self.statusbar.set_content("INFO", "F1 Pomoc  F2 Otworz")
-        self.statusbar.set_content("MESSAGE", "Saved")
+        self.statusbar.set_content("MESSAGE", "")
         
     def load_fonts(self):
         QtGui.QFontDatabase.addApplicationFont("resources/rm-regular.ttf")
@@ -64,3 +64,6 @@ class RMainWindow(QWidget):
         
     def load_style(self):
         self.setStyleSheet(stylesheet)
+
+    def show_message(self, message):
+        self.statusbar.set_content("MESSAGE", message)
