@@ -1,0 +1,66 @@
+# main view
+
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QTabWidget
+from Components import REditor, RStatusBar, RHtmlViewer
+from style import * # to Core module import
+
+class RMainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.init_ui()
+
+    def init_ui(self):
+        # building tabs
+        self.editor = REditor(self)
+        self.preview = RHtmlViewer(self)
+        
+        # building tab view
+        self.tabs = QTabWidget()
+        self.tabs.addTab(self.editor, "Editor")
+        self.tabs.addTab(self.preview, "Preview")
+        
+        # building statusbar
+        self.statusbar = self.buidl_statusbar()
+        self.statusbar.load()
+        self.fill_statusbar()
+        
+        # building layout
+        layout = QVBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.addSpacing(0)
+        layout.addWidget(self.tabs)
+        layout.addWidget(self.statusbar)
+        self.setLayout(layout)
+        
+        # prepare styling
+        self.load_fonts()
+        self.load_style()
+        
+        # loading icon
+        self.setWindowIcon(QtGui.QIcon('resources/icon.png'))
+        
+        # building window
+        self.setWindowTitle("River")
+        self.setMinimumSize(800, 600)
+        self.setContentsMargins(0, 0, 0, 0)
+        self.show()
+        
+    def buidl_statusbar(self):
+        component = RStatusBar()
+        component.add_panel("PROJECT")
+        component.add_panel("INFO", "C")
+        component.add_panel("MESSAGE", "R")
+        return component
+    
+    def fill_statusbar(self):
+        self.statusbar.set_content("PROJECT", "Informacja o projekcie")
+        self.statusbar.set_content("INFO", "F1 Pomoc  F2 Otworz")
+        self.statusbar.set_content("MESSAGE", "Saved")
+        
+    def load_fonts(self):
+        QtGui.QFontDatabase.addApplicationFont("resources/rm-regular.ttf")
+        QtGui.QFontDatabase.addApplicationFont("resources/rm-sbold.ttf")
+        
+    def load_style(self):
+        self.setStyleSheet(stylesheet)
