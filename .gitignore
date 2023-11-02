@@ -1,4 +1,5 @@
 # Project related
+projects/*
 app.config
 test.py
 River

@@ -8,11 +8,10 @@ class RTimer:
     main_timer_interval = 1000
     scheduler_interval = 7000
 
-    def __init__(self):
+    def __init__(self, parent):
         self.tic = 0
-        self.timer = QTimer(self)
-        self.schedule = QTimer(self)
-        self.prepare()
+        self.timer = QTimer(parent)
+        self.schedule = QTimer(parent)
 
     def prepare(self):
         self.timer.timeout.connect(self.timer_tic)

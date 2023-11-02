@@ -26,3 +26,15 @@ class REditor(QWidget):
             
     def resizeEvent(self, event):
         self.set_margins()
+
+    def is_modified(self):
+        return self.widget.document().isModified()
+    
+    def cool_down(self):
+        self.widget.document().setModified(False)
+    
+    def get_content(self):
+        return self.widget.document().toPlainText()
+    
+    def set_content(self, content):
+        self.widget.document().setPlainText(content)

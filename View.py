@@ -67,3 +67,15 @@ class RMainWindow(QWidget):
 
     def show_message(self, message):
         self.statusbar.set_content("MESSAGE", message)
+
+    def is_modified(self):
+        return self.editor.is_modified() # or sidepad modified
+
+    def leave_unmodified(self):
+        self.editor.cool_down()
+    
+    def get_main_content(self):
+        return self.editor.get_content()
+
+    def set_main_content(self, content):
+        self.editor.set_content(content)
