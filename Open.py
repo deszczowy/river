@@ -88,10 +88,9 @@ class ROpenSaveDialog(QDialog):
         self.selected_project_name = widget.caption
 
     def get_values(self):
-        path = self.selected_project_path
         name = self.selected_project_name
         isNew = self.newly_created
-        return path, name, isNew
+        return name, isNew
 
     def on_tab_change(self, tab):
         if tab == 0:
