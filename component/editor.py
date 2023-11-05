@@ -12,6 +12,9 @@ class REditor(QWidget):
         layout.addWidget(self.widget)
         self.setLayout(layout)
         self.set_margins()
+    
+    def set_focus(self):
+        self.widget.setFocus()
 
     def set_margins(self):
         margin = self.width() - 400

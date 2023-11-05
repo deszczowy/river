@@ -65,6 +65,7 @@ class RController:
         # Second, project data is loaded into editors
         self.load_project_data_to_view()
         # and here we are - project loaded
+        self.view.set_focus()
     
     def load_project_data_to_view(self):
         """

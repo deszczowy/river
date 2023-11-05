@@ -82,6 +82,9 @@ class RMainWindowConnector(RMainWindow):
 
     def __init__(self):
         super().__init__()
+    
+    def set_focus(self):
+        self.editor.set_focus()
 
     def is_modified(self):
         return self.editor.is_modified() # or sidepad modified
