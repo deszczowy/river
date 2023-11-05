@@ -20,6 +20,7 @@ class RMainWindow(QWidget):
         self.tabs = QTabWidget()
         self.tabs.addTab(self.editor, "Editor")
         self.tabs.addTab(self.preview, "Preview")
+        self.tabs.tabBar().hide()
         
         # building statusbar
         self.statusbar = self.buidl_statusbar()

@@ -108,8 +108,13 @@ class RController:
             self.save()
 
             # loading selected project
-            name, isNew = data
+            name = data.name
             self.load_project(name)
+
+            if data.new: # todo: update project info
+                print("New project created")
+                print(data.title)
+                print(data.description)
 
     def bind_actions(self):
         """

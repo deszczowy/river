@@ -8,10 +8,8 @@ Remember: incorporate prototype as quick as possible, then delete one
 
 ### Priorities for version 0.1
 1. Creating new project
-2. Opening project
-3. Autosave
-4. Printing main text
-5. Build
+2. Printing main text
+3. Build
 
 ### Prints
 - printing of main text - page divided in two columns (and optionally right side is empty for hand notes) -> html
@@ -19,7 +17,6 @@ Remember: incorporate prototype as quick as possible, then delete one
 - font 9pt, minimal margins
 
 ### Functions
-- autosave
 - projects backup
 - [F1] help, directed to help page on gh.com
 - project history/versions?
@@ -41,7 +38,6 @@ Remember: incorporate prototype as quick as possible, then delete one
 - fullscreen oprion
 - contrast theme, for working outside (should be tested in sunny garden ;)
 - light theme - tested in day
-- no tabs on main view (switching by shortcuts)
 - some light borders to widgets?
 - little padding on statusbar panels
 - top bar - button for main menu on the left, closing and/or alarm aplet on the right, no top margin for text editor
