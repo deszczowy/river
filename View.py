@@ -67,21 +67,6 @@ class RMainWindow(QWidget):
     def load_style(self):
         self.setStyleSheet(stylesheet)
 
-    def show_message(self, message):
-        self.statusbar.set_content("MESSAGE", message)
-
-    def is_modified(self):
-        return self.editor.is_modified() # or sidepad modified
-
-    def leave_unmodified(self):
-        self.editor.cool_down()
-    
-    def get_main_content(self):
-        return self.editor.get_content()
-
-    def set_main_content(self, content):
-        self.editor.set_content(content)
-
     def open_new_action(self, path):
         dialog = ROpenSaveDialog()
         dialog.load_projects(path)
@@ -92,6 +77,27 @@ class RMainWindow(QWidget):
         else:
             return None
 
+    
+class RMainWindowConnector(RMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+    def is_modified(self):
+        return self.editor.is_modified() # or sidepad modified
+
     def set_project_info(self, name, other = ""):
         data = ">> " + name + " >> "
         self.statusbar.set_content("PROJECT", data)
+
+    def set_unmodified(self):
+        self.editor.cool_down()
+
+    def set_main_content(self, content):
+        self.editor.set_content(content)
+
+    def get_main_content(self):
+        return self.editor.get_content()
+
+    def show_message(self, message):
+        self.statusbar.set_content("MESSAGE", message)

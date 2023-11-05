@@ -1,8 +1,10 @@
 import os
 
 class RDirectory:
-    def __init__(self):
-        self.root = os.getcwd()
+    def __init__(self, root = ""):
+        if root == "":
+            root = os.getcwd()
+        self.root = root
         self.projects = os.path.join(self.root, "projects") # todo: read from config. if not present - create like this
         
     def force_directory(self, path):

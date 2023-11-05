@@ -3,15 +3,14 @@ from PyQt5.QtWidgets import QShortcut
 from PyQt5.QtGui import QKeySequence
 
 class RController:
-    def __init__(self, engine, view):
-        self.config = None
+    def __init__(self, engine, view, config):
         self.project = None
         self.clock = None
 
+        self.config = config
         self.engine = engine
         self.view = view
 
-        self.load_config()
         self.load_project()
         self.setup_clock()
 
@@ -20,13 +19,13 @@ class RController:
 
         #self.view.update_button.clicked.connect(self.update_data)
         #self.update_view()
-    
-    def load_config(self):
-        self.config = RConfig()
 
     def load_project(self):
-        self.project = RProject()
+        projects_root_directory = self.config.get_setting('project_root', './') # constants for config entries
+        
+        self.project = RProject(projects_root_directory)
         self.project.load_project("default")
+        self.load_project_data_to_view()
 
     def setup_clock(self):
         self.clock = RTimer(self.view)
@@ -37,10 +36,17 @@ class RController:
     def save(self):
         if self.view.is_modified():
             mainText = self.view.get_main_content()
-            self.view.leave_unmodified()
+            self.view.set_unmodified()
             self.project.set(EnProjectFile.Flow, mainText)
             self.view.show_message("Saved")
             self.clock.setup()
+
+    def load_project_data_to_view(self):
+        name = self.project.get_current_name()
+        main = self.project.get(EnProjectFile.Flow)
+        #side = self.project.get(EnProjectFile.Note)
+        self.view.set_main_content(main)
+        self.view.set_project_info(name)
     
     def clear_message(self):
         self.view.show_message("")
@@ -54,10 +60,7 @@ class RController:
 
             path, name, isNew = data
             self.project.load_project(name)
-            main = self.project.get(EnProjectFile.Flow)
-            side = self.project.get(EnProjectFile.Note)
-            self.view.set_main_content(main)
-            self.view.set_project_info(name)
+            self.load_project_data_to_view()
 
     def update_data(self):
         data = self.view.edit_field.text()

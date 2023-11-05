@@ -28,3 +28,9 @@ class RConfig:
         with open(path, mode="r", encoding="utf-8") as _file:
             content = _file.readlines()
         return content
+
+    def get_setting(self, key, default):
+        value = self.settings[key]
+        if value == "":
+            value = default
+        return value

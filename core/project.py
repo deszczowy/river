@@ -14,18 +14,26 @@ class EnProjectFile(Enum):
     Note = 2
 
 class RProject:
-    def __init__(self):
-        self.directory = RDirectory()
+    def __init__(self, working_directory):
+        self.initialize(working_directory)
+    
+    def initialize(self, root):
+        self.name = ""
         self.file = RFile()
+        self.directory = RDirectory(root)
         self.path = self.directory.projects
+
         self.fileNames = {
             EnProjectFile.Header: "header.rvr",
             EnProjectFile.Flow: "main.rvr",
             EnProjectFile.Note: "notes.rvr"
         }
-    
+
     def get_root(self):
         return self.directory.projects
+    
+    def get_current_name(self):
+        return self.name
         
     def load_project(self, name):
         self.path = self.directory.get_project_path(name)
@@ -64,6 +72,7 @@ class RProject:
         name = self.get_file_name(kind)
         self.file.create(name)
         
+    # working with files content
     def get(self, kind):
         file = self.get_file_name(kind)
         return self.file.get_content(file)

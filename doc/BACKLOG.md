@@ -4,6 +4,8 @@ Remember: all todos are tasks to plan, so should eventually land here
 
 Remember: don't think too much, move on, there is plenty to do
 
+Remember: incorporate prototype as quick as possible, then delete one
+
 ### Priorities for version 0.1
 1. Creating new project
 2. Opening project
