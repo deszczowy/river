@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QTabWidget, QDialog
-from Components import REditor, RStatusBar, RHtmlViewer
+from Components import REditorConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
 from Open import ROpenSaveDialog
 
@@ -13,7 +13,7 @@ class RMainWindow(QWidget):
 
     def init_ui(self):
         # building tabs
-        self.editor = REditor(self)
+        self.editor = REditorConnector(self)
         self.preview = RHtmlViewer(self)
         
         # building tab view
