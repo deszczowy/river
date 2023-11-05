@@ -1,9 +1,10 @@
 # main view
 
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QTabWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QTabWidget, QDialog
 from Components import REditor, RStatusBar, RHtmlViewer
 from style import * # to Core module import
+from Open import ROpenSaveDialog
 
 class RMainWindow(QWidget):
     def __init__(self):
@@ -44,6 +45,7 @@ class RMainWindow(QWidget):
         self.setWindowTitle("River")
         self.setMinimumSize(800, 600)
         self.setContentsMargins(0, 0, 0, 0)
+
         self.show()
         
     def buidl_statusbar(self):
@@ -79,3 +81,17 @@ class RMainWindow(QWidget):
 
     def set_main_content(self, content):
         self.editor.set_content(content)
+
+    def open_new_action(self, path):
+        dialog = ROpenSaveDialog()
+        dialog.load_projects(path)
+
+        result = dialog.exec_()
+        if result == QDialog.Accepted:
+            return dialog.get_values()
+        else:
+            return None
+
+    def set_project_info(self, name, other = ""):
+        data = ">> " + name + " >> "
+        self.statusbar.set_content("PROJECT", data)

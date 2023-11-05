@@ -44,6 +44,20 @@ class RController:
     
     def clear_message(self):
         self.view.show_message("")
+    
+    def new_open(self):
+        path = self.project.get_root()
+        print(path)
+        data = self.view.open_new_action(path)
+        if data != None:
+            self.save()
+
+            path, name, isNew = data
+            self.project.load_project(name)
+            main = self.project.get(EnProjectFile.Flow)
+            side = self.project.get(EnProjectFile.Note)
+            self.view.set_main_content(main)
+            self.view.set_project_info(name)
 
     def update_data(self):
         data = self.view.edit_field.text()
@@ -59,7 +73,8 @@ class RController:
 
     def bind_shortcuts(self):
         self.shortcutSave = QShortcut(QKeySequence("Ctrl+S"), self.view)
-        #self.shortcutInfo = QShortcut(QKeySequence("F1"), self.view)
+        self.shortcutOpenNew = QShortcut(QKeySequence("F2"), self.view)
         self.shortcutSave.activated.connect(self.save)
+        self.shortcutOpenNew.activated.connect(self.new_open)
 
     

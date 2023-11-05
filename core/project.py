@@ -17,12 +17,15 @@ class RProject:
     def __init__(self):
         self.directory = RDirectory()
         self.file = RFile()
-        self.path = ""
+        self.path = self.directory.projects
         self.fileNames = {
             EnProjectFile.Header: "header.rvr",
             EnProjectFile.Flow: "main.rvr",
             EnProjectFile.Note: "notes.rvr"
         }
+    
+    def get_root(self):
+        return self.directory.projects
         
     def load_project(self, name):
         self.path = self.directory.get_project_path(name)
