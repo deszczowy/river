@@ -111,10 +111,9 @@ class RController:
             name = data.name
             self.load_project(name)
 
-            if data.new: # todo: update project info
+            if data.new:
+                self.project.update_header_file(data.title, data.author, data.description)
                 print("New project created")
-                print(data.title)
-                print(data.description)
 
     def bind_actions(self):
         """

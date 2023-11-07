@@ -4,10 +4,6 @@ from core.directory import RDirectory
 from core.file import RFile
 from enum import Enum
 
-empty_header = """title=
-author=
-overview="""
-
 class EnProjectFile(Enum):
     Header = 0
     Flow = 1
@@ -66,7 +62,8 @@ class RProject:
 
     def create_header(self):
         name = self.get_file_name(EnProjectFile.Header)
-        self.file.create(name, empty_header)
+        content = self.create_header_content("", "", "")
+        self.file.create(name, content)
 
     def create_empty_file(self, kind):
         name = self.get_file_name(kind)
@@ -80,3 +77,14 @@ class RProject:
     def set(self, kind, content):
         file = self.get_file_name(kind)
         return self.file.save_content(file, content)
+
+    def create_header_content(self, title, author, overview):
+        content = ""
+        content += "title={0}\n".format(title)
+        content += "author={0}\n".format(author)
+        content += "overview={0}\n".format(overview)
+        return content
+
+    def update_header_file(self, title, author, overview):
+        content = self.create_header_content(title, author, overview)
+        self.set(EnProjectFile.Header, content)
