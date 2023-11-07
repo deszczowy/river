@@ -57,11 +57,13 @@ class RMainWindow(QWidget):
         self.header = QWidget(self)
         self.menu_button = self.create_button("⋮", None)
         self.close_button = self.create_button("✖", None)
+        self.alarm_button = self.create_button("a", None)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addSpacing(0)
         layout.addWidget(self.menu_button)
         layout.addStretch()
+        layout.addWidget(self.alarm_button)
         layout.addWidget(self.close_button)
         self.header.setLayout(layout)
         

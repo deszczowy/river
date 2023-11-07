@@ -24,6 +24,7 @@ Remember: incorporate prototype as quick as possible, then delete one
 - aditional file for project with session state (cursor position, widgets toggled etc.)
 - export/import through zip files
 - saving on close!
+- alarm to set if you want to be inform when to stop writing session
 
 ### UI
 - (left) main menu. [Esc] key, button maybe. Simple with buttons, actions on keys. Buttons with pointer cursor and hover - simple and weby vibe. Option name + key
@@ -35,12 +36,11 @@ Remember: incorporate prototype as quick as possible, then delete one
 - open project dialog, with list of projects loaded from configured path
 - options dialog
 - UI by principle will not have clock BUT maybe alarm for ending session?
-- fullscreen oprion
+- fullscreen oprion, with small closing x for return besides keyboard shortcut)
 - contrast theme, for working outside (should be tested in sunny garden ;)
 - light theme - tested in day
 - some light borders to widgets?
 - little padding on statusbar panels
-- top bar - button for main menu on the left, closing and/or alarm aplet on the right, no top margin for text editor
 - project properties dialog
 
 ### Build

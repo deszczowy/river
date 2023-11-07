@@ -27,7 +27,7 @@ class REditor(QWidget):
         if margin < 0:
             margin = 0
         if margin != self.margin_width:
-            self.editor.setViewportMargins(margin, 20, margin, 20)
+            self.editor.setViewportMargins(margin, 0, margin, 20)
             self.margin_width = margin
             
     def resizeEvent(self, event):
