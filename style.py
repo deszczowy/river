@@ -39,10 +39,9 @@ stylesheet = """
     {
         font-size:12px;
         border: 0px; 
-        min-width: 70px; 
-        min-height: 30px; 
-        padding: 5px; 
-        background-color: #4D4D4D; 
+        min-width: 10px; 
+        min-height: 10px; 
+        padding: 3px;
         color: #D4D4D4;
     }
 

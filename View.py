@@ -1,7 +1,7 @@
 # main view
 
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QTabWidget, QDialog
+from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTabWidget, QDialog, QPushButton
 from Components import REditorConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
 from Open import ROpenSaveDialog
@@ -16,6 +16,9 @@ class RMainWindow(QWidget):
         self.editor = REditorConnector(self)
         self.preview = RHtmlViewer(self)
         
+        # building top bar
+        self.build_header()
+
         # building tab view
         self.tabs = QTabWidget()
         self.tabs.addTab(self.editor, "Editor")
@@ -31,6 +34,7 @@ class RMainWindow(QWidget):
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addSpacing(0)
+        layout.addWidget(self.header)
         layout.addWidget(self.tabs)
         layout.addWidget(self.statusbar)
         self.setLayout(layout)
@@ -48,7 +52,26 @@ class RMainWindow(QWidget):
         self.setContentsMargins(0, 0, 0, 0)
 
         self.show()
+
+    def build_header(self):
+        self.header = QWidget(self)
+        self.menu_button = self.create_button("⋮", None)
+        self.close_button = self.create_button("✖", None)
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.addSpacing(0)
+        layout.addWidget(self.menu_button)
+        layout.addStretch()
+        layout.addWidget(self.close_button)
+        self.header.setLayout(layout)
         
+    def create_button(self, caption, on_click_method):
+        button = QPushButton(caption)
+        button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        if on_click_method != None:
+            button.clicked.connect(on_click_method)
+        return button
+
     def buidl_statusbar(self):
         component = RStatusBar()
         component.add_panel("PROJECT")
