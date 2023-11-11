@@ -25,6 +25,7 @@ class RStatusBar(QWidget):
 
     def add_panel(self, name, textAlign = 'L', width = 0):
         panel = QLabel("")
+        panel.setObjectName("StatusPanel")
         
         if textAlign == 'L':
             panel.setAlignment(QtCore.Qt.AlignLeft)

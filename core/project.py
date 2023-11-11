@@ -33,6 +33,7 @@ class RProject:
         
     def load_project(self, name):
         self.path = self.directory.get_project_path(name)
+        self.name = name
         self.file.set_root(self.path)
         self.check_structure()
         

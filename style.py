@@ -17,6 +17,7 @@ stylesheet = """
     {
         font-size: 12px;
         color: #4E4E4E;
+        color: white;
     }
 
     QLineEdit
@@ -128,5 +129,12 @@ stylesheet = """
         color: #8C8C8C;
         padding: 5px;
         font-family: mono;
+    }
+
+    #StatusPanel
+    {
+        font-size: 10px;
+        color: #bbb;
+        padding: 10px;
     }
 """

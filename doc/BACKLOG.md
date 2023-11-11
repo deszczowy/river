@@ -1,10 +1,9 @@
 ## Unsorted (but grouped) thoghts and ideas
 
-Remember: all todos are tasks to plan, so should eventually land here
-
-Remember: don't think too much, move on, there is plenty to do
-
-Remember: incorporate prototype as quick as possible, then delete one
+Remember: 
+- all todos are tasks to plan, so should eventually land here
+- don't think too much, move on, there is plenty to do
+- incorporate prototype as quick as possible, then delete one
 
 ### Priorities for version 0.1
 1. Creating new project
@@ -31,16 +30,11 @@ Remember: incorporate prototype as quick as possible, then delete one
 - side editor for random notes (right)
 - statusbar center panel - description for menu, sidenote and preview
 - statusbar left panel - project name + "#"'s count
-- statusbar right panel - message board
-- new project dialog
-- open project dialog, with list of projects loaded from configured path
 - options dialog
-- UI by principle will not have clock BUT maybe alarm for ending session?
-- fullscreen oprion, with small closing x for return besides keyboard shortcut)
+- fullscreen option, with small closing x for return besides keyboard shortcut)
 - contrast theme, for working outside (should be tested in sunny garden ;)
 - light theme - tested in day
 - some light borders to widgets?
-- little padding on statusbar panels
 - project properties dialog
 
 ### Build
@@ -65,7 +59,7 @@ Remember: incorporate prototype as quick as possible, then delete one
 
 ### Processes and notes
 - F10 - F12 slots can be free if themes will be triggered in chain on F9 key, starting from dark, to custom and so on
-- view classes chold have middleclasses to set/get data. Connectors
+- view classes should have middleclasses to set/get data. Connectors
 - how to get into config dirctory linux/windows
 - deb packaging
 
