@@ -6,9 +6,8 @@ Remember:
 - incorporate prototype as quick as possible, then delete one
 
 ### Priorities for version 0.1
-1. Creating new project
-2. Printing main text
-3. Build
+1. Printing main text
+2. Build
 
 ### Prints
 - printing of main text - page divided in two columns (and optionally right side is empty for hand notes) -> html

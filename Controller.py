@@ -114,6 +114,20 @@ class RController:
             if data.new:
                 self.project.update_header_file(data.title, data.author, data.description)
                 print("New project created")
+    
+    def run_print(self):
+        """
+        Action method for printing.
+        It calls printing dialog, and the rest action is done there.
+        """
+        # Project's build files location
+        path = self.project.get_build_directory()
+
+        # Calling print dialog with build path
+        data = self.view.print_action(path)
+        if data != None:
+            print("Printing {0}".format(data))
+
 
     def bind_actions(self):
         """
@@ -127,7 +141,10 @@ class RController:
         """
         self.shortcutSave = QShortcut(QKeySequence("Ctrl+S"), self.view)
         self.shortcutOpenNew = QShortcut(QKeySequence("F2"), self.view)
+        self.shortCutPrint = QShortcut(QKeySequence("F4"), self.view)
+
         self.shortcutSave.activated.connect(self.save)
         self.shortcutOpenNew.activated.connect(self.run_new_open)
+        self.shortCutPrint.activated.connect(self.run_print)
 
     

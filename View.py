@@ -4,7 +4,8 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTabWidget, QDialog, QPushButton
 from Components import REditorConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
-from Open import ROpenSaveDialog
+from Open import ROpenSaveDialog # todo all dialogs to one module
+from Print import RPrintDialog
 
 class RMainWindow(QWidget):
     def __init__(self):
@@ -93,6 +94,17 @@ class RMainWindow(QWidget):
     def load_style(self):
         self.setStyleSheet(stylesheet)
 
+    def where_is_focus(self):
+        result = 0
+        if self.editor.is_focused():
+            result = 1
+        #elif self.side_note.focus():
+        #    result = 2
+        elif self.tabs.currentIndex() == 2:
+            result = 3
+        print(result)
+        return result
+
     def open_new_action(self, path):
         dialog = ROpenSaveDialog()
         dialog.load_projects(path)
@@ -102,6 +114,15 @@ class RMainWindow(QWidget):
             return dialog.get_values()
         else:
             return None
+
+    def print_action(self, path):
+        default = self.where_is_focus()
+        dialog = RPrintDialog()
+        dialog.init(path, default)
+        result = dialog.exec_()
+        if result == QDialog.Accepted:
+            return dialog.get_value()
+        return None
 
     
 class RMainWindowConnector(RMainWindow):

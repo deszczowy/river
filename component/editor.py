@@ -43,6 +43,9 @@ class REditorConnector(REditor):
 
     def set_focus(self):
         self.editor.setFocus()
+    
+    def is_focused(self):
+        return self.editor.hasFocus()
 
     def is_modified(self):
         return self.editor.document().isModified()

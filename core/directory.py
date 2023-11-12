@@ -14,7 +14,12 @@ class RDirectory:
     def build(self):
         self.force_directory(self.projects)
         
-    def get_project_path(self, projectName):
-        path = os.path.join(self.projects, projectName)
+    def get_project_path(self, project_name):
+        path = os.path.join(self.projects, project_name)
+        self.force_directory(path)
+        return path
+    
+    def get_project_build_path(self, project_name):
+        path = os.path.join(self.projects, project_name, "build")
         self.force_directory(path)
         return path

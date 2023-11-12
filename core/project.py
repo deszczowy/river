@@ -27,6 +27,9 @@ class RProject:
 
     def get_root(self):
         return self.directory.projects
+
+    def get_build_directory(self):
+        return self.directory.get_project_build_path(self.name)
     
     def get_current_name(self):
         return self.name
