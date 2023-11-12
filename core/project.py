@@ -2,12 +2,8 @@ import os
 
 from core.directory import RDirectory
 from core.file import RFile
-from enum import Enum
+from Enums import EnProjectFile
 
-class EnProjectFile(Enum):
-    Header = 0
-    Flow = 1
-    Note = 2
 
 class RProject:
     def __init__(self, working_directory):
