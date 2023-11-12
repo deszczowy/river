@@ -1,7 +1,6 @@
 import os
 
-from core.directory import RDirectory
-from core.file import RFile
+from Core import RDirectory, RFile
 from Enums import EnProjectFile
 
 

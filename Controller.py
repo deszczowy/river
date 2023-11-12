@@ -1,4 +1,5 @@
-from Core import RProject, RConfig, RTimer
+from Core import RConfig, RTimer
+from Engine import RProject
 from Enums import EnProjectFile
 from PyQt5.QtWidgets import QShortcut
 from PyQt5.QtGui import QKeySequence
