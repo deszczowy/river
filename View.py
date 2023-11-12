@@ -4,8 +4,7 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTabWidget, QDialog, QPushButton
 from Components import REditorConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
-from Open import ROpenSaveDialog # todo all dialogs to one module
-from Print import RPrintDialog
+from Dialogs import ROpenSaveDialog, RPrintDialog
 
 class RMainWindow(QWidget):
     def __init__(self):
