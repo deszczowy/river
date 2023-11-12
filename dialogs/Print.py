@@ -1,11 +1,12 @@
 from PyQt5.QtWidgets import QDialog, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QRadioButton
+from Enums import EnPrintSource
 
 class RPrintDialog(QDialog):
     def __init__(self):
         super(RPrintDialog, self).__init__()
         self.build_window()
         self.build_path = ""
-        self.selected = 0
+        self.selected = EnPrintSource.Nothing
 
         self.setMinimumSize(400, 200)
         self.setContentsMargins(0, 0, 0, 0)
@@ -39,24 +40,26 @@ class RPrintDialog(QDialog):
         return frame
 
     def select(self, which):
+        print("Input select {0}".format(which))
         self.selected = which
-        if which == 1:
+        if which == EnPrintSource.MainText:
             self.radio_button_main.setChecked(True)
-        elif which == 2:
+        elif which == EnPrintSource.SideNotes:
             self.radio_button_side.setChecked(True)
-        elif which == 3:
+        elif which == EnPrintSource.Build:
             self.radio_button_make.setChecked(True)
 
     def on_select(self):
         if self.radio_button_main.isChecked():
-            self.selected = 1
+            self.selected = EnPrintSource.MainText
         elif self.radio_button_side.isChecked():
-            self.selected = 2
+            self.selected = EnPrintSource.SideNotes
         elif self.radio_button_make.isChecked():
-            self.selected = 3
+            self.selected = EnPrintSource.Build
         print(selected)
 
     def get_value(self):
+        print("Result value {0}".format(self.selected))
         return self.selected
 
     def build_window(self):

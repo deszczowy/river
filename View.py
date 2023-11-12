@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTab
 from Components import REditorConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
 from Dialogs import ROpenSaveDialog, RPrintDialog
+from Enums import EnPrintSource
 
 class RMainWindow(QWidget):
     def __init__(self):
@@ -94,14 +95,14 @@ class RMainWindow(QWidget):
         self.setStyleSheet(stylesheet)
 
     def where_is_focus(self):
-        result = 0
+        result = EnPrintSource.Nothing
         if self.editor.is_focused():
-            result = 1
+            result = EnPrintSource.MainText
         #elif self.side_note.focus():
-        #    result = 2
+        #    result = EnPrintSource.SideNotes
         elif self.tabs.currentIndex() == 2:
-            result = 3
-        print(result)
+            result = EnPrintSource.Build
+        print("Focus check {0}".format(result))
         return result
 
     def open_new_action(self, path):
