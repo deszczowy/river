@@ -2,9 +2,9 @@ import pdfkit
 import subprocess
 import os
 
-class Printer:
+class RPrinter:
 
-    def __init__(self, work_directory, file):
+    def __init__(self, file_to_print):
         self.options = {
             'page-size': 'A4',
             'margin-top': '0mm',
@@ -12,8 +12,7 @@ class Printer:
             'margin-bottom': '0mm',
             'margin-left': '0mm',
         }
-        self.path = work_directory
-        self.input_file = os.path.join(work_directory, file)
+        self.input_file = file_to_print
         self.output_file = "{0}.pdf".format(self.input_file) 
 
     def print(self):

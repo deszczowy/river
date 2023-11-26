@@ -1,5 +1,5 @@
 from Core import RConfig, RTimer
-from Engine import RProject
+from Engine import RProject, RBuild
 from Enums import EnProjectFile
 from PyQt5.QtWidgets import QShortcut
 from PyQt5.QtGui import QKeySequence
@@ -130,6 +130,8 @@ class RController:
         if data != None:
             print("Printing {0}".format(data))
 
+            build = RBuild(path)
+            build.print_main_text(self.view.get_main_content())
 
     def bind_actions(self):
         """

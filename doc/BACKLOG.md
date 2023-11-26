@@ -6,13 +6,11 @@ Remember:
 - incorporate prototype as quick as possible, then delete one
 
 ### Priorities for version 0.1
-1. Printing main text
-2. Build
+1. Build
 
 ### Prints
-- printing of main text - page divided in two columns (and optionally right side is empty for hand notes) -> html
+- right side left blank for notes - option in print dialog
 - prints have code name (project name) on a header
-- font 9pt, minimal margins
 
 ### Functions
 - projects backup
@@ -41,20 +39,20 @@ Remember:
 - special directory 'build' for build resutls in project location
 
 ### Keys
-[Esc] - Main menu
-[F1] - Help
-[F2] - Open dialog
-[F3] - Saving as new project dialog
-[F4] - Print
-[F5] - Build
-[F6] - Toggle side
-[F7] - Toggle fullscreen
-[F8] - Options dialog
-[F9] - Theme dark
-[F10] - Theme light
-[F11] - Theme contrast
-[F12] - Theme custom
-[Ctrl + S] - Save on demand
+- [Esc] - Main menu
+- [F1] - Help
+- * [F2] - Open dialog
+- [F3] - Saving as new project dialog
+- * [F4] - Print
+- [F5] - Build
+- [F6] - Toggle side
+- [F7] - Toggle fullscreen
+- [F8] - Options dialog
+- [F9] - Theme dark
+- [F10] - Theme light
+- [F11] - Theme contrast
+- [F12] - Theme custom
+- * [Ctrl + S] - Save on demand
 
 ### Processes and notes
 - F10 - F12 slots can be free if themes will be triggered in chain on F9 key, starting from dark, to custom and so on

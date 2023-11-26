@@ -5,7 +5,6 @@ class RPrintDialog(QDialog):
     def __init__(self):
         super(RPrintDialog, self).__init__()
         self.build_window()
-        self.build_path = ""
         self.selected = EnPrintSource.Nothing
 
         self.setMinimumSize(400, 200)
@@ -13,7 +12,6 @@ class RPrintDialog(QDialog):
         self.setWindowTitle("Printing")
 
     def init(self, path, selection):
-        self.build_path = path
         self.label.setText(path)
         self.select(selection)
 
