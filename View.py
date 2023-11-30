@@ -10,6 +10,7 @@ from Enums import EnPrintSource
 class RMainWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.wasMaximized = False
         self.init_ui()
 
     def init_ui(self):
@@ -57,7 +58,6 @@ class RMainWindow(QWidget):
     def build_header(self):
         self.header = QWidget(self)
         self.menu_button = self.create_button("⋮", None)
-        self.close_button = self.create_button("✖", None)
         self.alarm_button = self.create_button("a", None)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -65,7 +65,6 @@ class RMainWindow(QWidget):
         layout.addWidget(self.menu_button)
         layout.addStretch()
         layout.addWidget(self.alarm_button)
-        layout.addWidget(self.close_button)
         self.header.setLayout(layout)
         
     def create_button(self, caption, on_click_method):
@@ -90,6 +89,17 @@ class RMainWindow(QWidget):
     def load_fonts(self):
         QtGui.QFontDatabase.addApplicationFont("resources/rm-regular.ttf")
         QtGui.QFontDatabase.addApplicationFont("resources/rm-sbold.ttf")
+
+    def toggle_fullscreen(self):
+        if self.isFullScreen():
+            if self.wasMaximized:
+                self.showNormal()
+                self.showMaximized()
+            else:
+                self.showNormal()
+        else:
+            self.wasMaximized = self.isMaximized()
+            self.showFullScreen()
         
     def load_style(self):
         self.setStyleSheet(stylesheet)

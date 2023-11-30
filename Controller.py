@@ -133,6 +133,9 @@ class RController:
             build = RBuild(path)
             build.print_main_text(self.view.get_main_content())
 
+    def run_fullscreen_toggle(self):
+        self.view.toggle_fullscreen()
+
     def bind_actions(self):
         """
         The only one method to bind all view events with coresponding actions. Yet not implemented (no buttons or such in view...)
@@ -146,9 +149,11 @@ class RController:
         self.shortcutSave = QShortcut(QKeySequence("Ctrl+S"), self.view)
         self.shortcutOpenNew = QShortcut(QKeySequence("F2"), self.view)
         self.shortCutPrint = QShortcut(QKeySequence("F4"), self.view)
+        self.shortCutFullscreen = QShortcut(QKeySequence("F7"), self.view)
 
         self.shortcutSave.activated.connect(self.save)
         self.shortcutOpenNew.activated.connect(self.run_new_open)
         self.shortCutPrint.activated.connect(self.run_print)
+        self.shortCutFullscreen.activated.connect(self.run_fullscreen_toggle)
 
     

@@ -28,7 +28,6 @@ Remember:
 - statusbar center panel - description for menu, sidenote and preview
 - statusbar left panel - project name + "#"'s count
 - options dialog
-- fullscreen option, with small closing x for return besides keyboard shortcut)
 - contrast theme, for working outside (should be tested in sunny garden ;)
 - light theme - tested in day
 - some light borders to widgets?
@@ -46,7 +45,7 @@ Remember:
 - * [F4] - Print
 - [F5] - Build
 - [F6] - Toggle side
-- [F7] - Toggle fullscreen
+- * [F7] - Toggle fullscreen
 - [F8] - Options dialog
 - [F9] - Theme dark
 - [F10] - Theme light
