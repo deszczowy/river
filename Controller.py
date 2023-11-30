@@ -136,11 +136,14 @@ class RController:
     def run_fullscreen_toggle(self):
         self.view.toggle_fullscreen()
 
+    def run_on_close(self):
+        self.save()
+
     def bind_actions(self):
         """
-        The only one method to bind all view events with coresponding actions. Yet not implemented (no buttons or such in view...)
+        The only one method to bind all view events with coresponding actions.
         """
-        print("Not implemented")
+        self.view.on_close_method = self.run_on_close
 
     def bind_shortcuts(self):
         """

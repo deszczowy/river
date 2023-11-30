@@ -8,6 +8,9 @@ from Dialogs import ROpenSaveDialog, RPrintDialog
 from Enums import EnPrintSource
 
 class RMainWindow(QWidget):
+
+    on_close_method = None
+
     def __init__(self):
         super().__init__()
         self.wasMaximized = False
@@ -133,6 +136,11 @@ class RMainWindow(QWidget):
         if result == QDialog.Accepted:
             return dialog.get_value()
         return None
+    
+    def closeEvent(self, event):
+        if self.on_close_method != None:
+            self.on_close_method()
+        event.accept()
 
     
 class RMainWindowConnector(RMainWindow):
