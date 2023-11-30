@@ -60,7 +60,7 @@ class RMainWindow(QWidget):
 
     def build_header(self):
         self.header = QWidget(self)
-        self.menu_button = self.create_button("⋮", None)
+        self.menu_button = self.create_button("menu", None)
         self.alarm_button = self.create_button("a", None)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)

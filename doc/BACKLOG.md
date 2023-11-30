@@ -19,7 +19,6 @@ Remember:
 - defining custom theme
 - aditional file for project with session state (cursor position, widgets toggled etc.)
 - export/import through zip files
-- saving on close!
 - alarm to set if you want to be inform when to stop writing session
 
 ### UI

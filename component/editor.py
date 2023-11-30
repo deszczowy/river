@@ -58,3 +58,4 @@ class REditorConnector(REditor):
     
     def set_content(self, content):
         self.editor.document().setPlainText(content)
+        self.cool_down()
