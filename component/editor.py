@@ -22,7 +22,6 @@ class REditor(QWidget):
     def set_margins(self):
         margin = self.width() - 400
         margin = round(margin / 2)
-        print(margin)
 
         if margin < 0:
             margin = 0

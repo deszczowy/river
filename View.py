@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTabWidget, QDialog, QPushButton
-from Components import REditorConnector, RStatusBar, RHtmlViewer
+from Components import REditorConnector, RSideNoteConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
 from Dialogs import ROpenSaveDialog, RPrintDialog
 from Enums import EnPrintSource
@@ -43,6 +43,9 @@ class RMainWindow(QWidget):
         layout.addWidget(self.tabs)
         layout.addWidget(self.statusbar)
         self.setLayout(layout)
+
+        # building additional components
+        self.sidenote = RSideNoteConnector(self)
         
         # prepare styling
         self.load_fonts()
@@ -104,6 +107,14 @@ class RMainWindow(QWidget):
             self.wasMaximized = self.isMaximized()
             self.showFullScreen()
         
+    def toggle_sidenote(self):
+        if self.sidenote.isHidden():
+            self.sidenote.show()
+            self.sidenote.set_focus()
+        else:
+            self.sidenote.hide()
+            self.editor.set_focus()
+
     def load_style(self):
         self.setStyleSheet(stylesheet)
 
@@ -140,6 +151,10 @@ class RMainWindow(QWidget):
     def closeEvent(self, event):
         if self.on_close_method != None:
             self.on_close_method()
+        event.accept()
+
+    def resizeEvent(self, event):
+        self.sidenote.resizeEvent(event)
         event.accept()
 
     

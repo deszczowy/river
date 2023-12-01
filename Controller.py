@@ -136,6 +136,9 @@ class RController:
     def run_fullscreen_toggle(self):
         self.view.toggle_fullscreen()
 
+    def run_sidenote_toggle(self):
+        self.view.toggle_sidenote()
+
     def run_on_close(self):
         self.save()
 
@@ -152,11 +155,13 @@ class RController:
         self.shortcutSave = QShortcut(QKeySequence("Ctrl+S"), self.view)
         self.shortcutOpenNew = QShortcut(QKeySequence("F2"), self.view)
         self.shortCutPrint = QShortcut(QKeySequence("F4"), self.view)
+        self.shortCutSideNote = QShortcut(QKeySequence("F6"), self.view)
         self.shortCutFullscreen = QShortcut(QKeySequence("F7"), self.view)
 
         self.shortcutSave.activated.connect(self.save)
         self.shortcutOpenNew.activated.connect(self.run_new_open)
         self.shortCutPrint.activated.connect(self.run_print)
+        self.shortCutSideNote.activated.connect(self.run_sidenote_toggle)
         self.shortCutFullscreen.activated.connect(self.run_fullscreen_toggle)
 
     
