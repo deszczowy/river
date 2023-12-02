@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTab
 from Components import REditorConnector, RSideNoteConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
 from Dialogs import ROpenSaveDialog, RPrintDialog
-from Enums import EnPrintSource
+from Enums import EnPrintSource, EnProjectFile
 
 class RMainWindow(QWidget):
 
@@ -122,8 +122,8 @@ class RMainWindow(QWidget):
         result = EnPrintSource.Nothing
         if self.editor.is_focused():
             result = EnPrintSource.MainText
-        #elif self.side_note.focus():
-        #    result = EnPrintSource.SideNotes
+        elif self.sidenote.is_focused():
+            result = EnPrintSource.SideNotes
         elif self.tabs.currentIndex() == 2:
             result = EnPrintSource.Build
         print("Focus check {0}".format(result))
@@ -166,8 +166,12 @@ class RMainWindowConnector(RMainWindow):
     def set_focus(self):
         self.editor.set_focus()
 
-    def is_modified(self):
-        return self.editor.is_modified() # or sidepad modified
+    def is_modified(self, element):
+        if element == EnProjectFile.Flow:
+            return self.editor.is_modified()
+        if element == EnProjectFile.Note:
+            return self.sidenote.is_modified()
+        return False
 
     def set_project_info(self, name, other = ""):
         data = ">> " + name + " >> "
@@ -175,12 +179,19 @@ class RMainWindowConnector(RMainWindow):
 
     def set_unmodified(self):
         self.editor.cool_down()
+        self.sidenote.cool_down()
 
     def set_main_content(self, content):
         self.editor.set_content(content)
+    
+    def set_side_content(self, content):
+        self.sidenote.set_content(content)
 
     def get_main_content(self):
         return self.editor.get_content()
+    
+    def get_side_content(self):
+        return self.sidenote.get_content()
 
     def show_message(self, message):
         self.statusbar.set_content("MESSAGE", message)

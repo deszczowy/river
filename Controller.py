@@ -46,14 +46,21 @@ class RController:
         It stores current project's data on disk using project manager.
         All action is triggered only if editors are modified.
         """
-        if self.view.is_modified():
-            # Collecting data from editors
+        saved = False
+        if self.view.is_modified(EnProjectFile.Flow):
             mainText = self.view.get_main_content()
-            
-            # Storing data in project files
-            self.project.set(EnProjectFile.Flow, mainText) # todo: EnProjectFile.Flow is a internal project identifier, should not be used here on a controller level
-            
-            # Finalisation
+            self.project.set(EnProjectFile.Flow, mainText)
+            saved = True
+            print("Main")
+        
+        if self.view.is_modified(EnProjectFile.Note):
+            sideNote = self.view.get_side_content()
+            self.project.set(EnProjectFile.Note, sideNote)
+            saved = True
+            print("Note")
+
+        # Finalisation
+        if saved:
             self.view.set_unmodified()
             self.view.show_message("Saved")
             self.clock.setup()
@@ -77,10 +84,11 @@ class RController:
         # Reading project data
         name = self.project.get_current_name()
         main = self.project.get(EnProjectFile.Flow)
-        #side = self.project.get(EnProjectFile.Note)
+        side = self.project.get(EnProjectFile.Note)
         
         # Loading content
         self.view.set_main_content(main)
+        self.view.set_side_content(side)
         # Statusbar update
         self.view.set_project_info(name)
     

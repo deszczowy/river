@@ -28,9 +28,9 @@ class RSideNote(QWidget):
 
     def calculate_and_set_geometry(self):
         x0 = self.parent.width() - self.max_width
-        y0 = 0
+        y0 = self.parent.header.height()
         x1 = self.max_width
-        y1 = self.parent.height()
+        y1 = self.parent.tabs.height()
         self.setGeometry(x0, y0, x1, y1)
 
 class RSideNoteConnector(RSideNote):
