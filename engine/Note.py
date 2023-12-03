@@ -3,6 +3,7 @@ from engine.Functions import *
 class Note:
 
     def __init__(self, txt, id):
+        self.stoppers = {' ', '.', '\n', '?', '!', '#'}
         if id == 0:
             self.id = new_id()
         else:
@@ -26,7 +27,7 @@ class Note:
                 elif character == "@":
                     inTag = True
                     current += character
-                elif character == " " or character == "\n":
+                elif character in self.stoppers:
                     current += character
                     if tag != "":
                         self.tags.append(tag)
