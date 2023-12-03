@@ -149,6 +149,10 @@ class RController:
 
     def run_on_close(self):
         self.save()
+    
+    def run_test(self):
+        c = self.view.get_main_content()
+        self.engine.test(c)
 
     def bind_actions(self):
         """
@@ -171,5 +175,8 @@ class RController:
         self.shortCutPrint.activated.connect(self.run_print)
         self.shortCutSideNote.activated.connect(self.run_sidenote_toggle)
         self.shortCutFullscreen.activated.connect(self.run_fullscreen_toggle)
+
+        self.shortCutTest = QShortcut(QKeySequence("Ctrl+Q"), self.view)
+        self.shortCutTest.activated.connect(self.run_test)
 
     

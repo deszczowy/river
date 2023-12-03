@@ -23,7 +23,6 @@ Remember:
 
 ### UI
 - (left) main menu. [Esc] key, button maybe. Simple with buttons, actions on keys. Buttons with pointer cursor and hover - simple and weby vibe. Option name + key
-- side editor for random notes (right)
 - statusbar center panel - description for menu, sidenote and preview
 - statusbar left panel - project name + "#"'s count
 - options dialog
@@ -43,7 +42,7 @@ Remember:
 - [F3] - Saving as new project dialog
 - * [F4] - Print
 - [F5] - Build
-- [F6] - Toggle side
+- * [F6] - Toggle side
 - * [F7] - Toggle fullscreen
 - [F8] - Options dialog
 - [F9] - Theme dark
