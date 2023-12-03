@@ -11,19 +11,30 @@ class Note:
         self.title = ""
         self.note = ""
         self.tags = []
+        self.notices = []
         self.work(txt)
 
     def work(self, txt):
         current = ""
         tag = ""
+        notice = ""
+
         self.tags = []
         inTag = False
+        inNotice = False
 
         for character in txt:
             if character != "#":
                 if character == ":":
                     self.title = current
                     current = ""
+                elif character == "[":
+                    inNotice = True
+                elif character == "]":
+                    if notice != "":
+                        self.notices.append(notice)
+                        notice = ""
+                    inNotice = False
                 elif character == "@":
                     inTag = True
                     current += character
@@ -36,11 +47,18 @@ class Note:
                 else:
                     if inTag:
                         tag += character
-                    current += character
+                        current += character
+                    elif inNotice:
+                        notice += character
+                    else:
+                        current += character
             else:
                 break
         if tag != "":
             self.tags.append(tag)
+        if notice != "":
+            self.notices.append(notice)
+
         self.note = current
         if self.title == "":
             self.title = self.note[:20] + "..."
@@ -49,3 +67,4 @@ class Note:
         print("Title: ", self.title)
         print("Content: ", self.note)
         print("Tags: ", self.tags)
+        print("Notices: ", self.notices)

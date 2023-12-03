@@ -6,7 +6,6 @@ class REngine:
         self.container = None
     
     def test(self, content):
-        print(content)
         self.container = Container(content)
 
         doc = RProjectBuild()
