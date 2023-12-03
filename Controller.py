@@ -149,6 +149,24 @@ class RController:
 
     def run_on_close(self):
         self.save()
+
+    def run_build(self):
+        """
+        Action method for building project.
+        After building preview panel is shown.
+        """
+        # Project's build files location
+        path = self.project.get_build_directory()
+
+        # Project's main flow content 
+        flow = self.view.get_main_content()
+
+        # Building
+        build = RBuild(path)
+        output = build.build_flow(flow)
+
+        # Show result
+        self.view.show_build_action(output)
     
     def run_test(self):
         c = self.view.get_main_content()
@@ -167,12 +185,14 @@ class RController:
         self.shortcutSave = QShortcut(QKeySequence("Ctrl+S"), self.view)
         self.shortcutOpenNew = QShortcut(QKeySequence("F2"), self.view)
         self.shortCutPrint = QShortcut(QKeySequence("F4"), self.view)
+        self.shortCutBuild = QShortcut(QKeySequence("F5"), self.view)
         self.shortCutSideNote = QShortcut(QKeySequence("F6"), self.view)
         self.shortCutFullscreen = QShortcut(QKeySequence("F7"), self.view)
 
         self.shortcutSave.activated.connect(self.save)
         self.shortcutOpenNew.activated.connect(self.run_new_open)
         self.shortCutPrint.activated.connect(self.run_print)
+        self.shortCutBuild.activated.connect(self.run_build)
         self.shortCutSideNote.activated.connect(self.run_sidenote_toggle)
         self.shortCutFullscreen.activated.connect(self.run_fullscreen_toggle)
 

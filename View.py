@@ -147,6 +147,14 @@ class RMainWindow(QWidget):
         if result == QDialog.Accepted:
             return dialog.get_value()
         return None
+
+    def show_build_action(self, build_file):
+        index = self.tabs.currentIndex()
+        if index == 0:
+            self.preview.load(build_file)
+            self.tabs.setCurrentIndex(1)
+        else:
+            self.tabs.setCurrentIndex(0)
     
     def closeEvent(self, event):
         if self.on_close_method != None:

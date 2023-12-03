@@ -23,9 +23,8 @@ class RHtmlViewer(QWidget):
         viewer_layout = QVBoxLayout()
         viewer_layout.addWidget(self.browser)
         self.setLayout(viewer_layout)
-        self.load()
     
-    def load(self):
-        file_path = os.path.abspath("build.html")
+    def load(self, path):
+        file_path = os.path.abspath(path)
         url = QUrl.fromLocalFile(file_path)
         self.browser.setUrl(url)

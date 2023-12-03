@@ -1,10 +1,13 @@
 import os
 from Core import RMainTextHtml, RPrinter
+from engine.BuildHtml import *
+from engine.Container import *
 
 class RBuild:
     def __init__(self, root):
         self.root = ""
         self.printout = "print.html"
+        self.buildout = "build.html"
         self.setup(root)
 
     def setup(self, directory):
@@ -30,3 +33,17 @@ class RBuild:
         p.print()
         p.open()
 
+    def build_flow(self, content):
+        container = Container(content)
+
+        bf = RProjectBuildHtml()
+        bf.build(container)
+
+        f = os.path.join(self.root, self.buildout)
+        c = bf.get()
+
+        print(f)
+        print(c)
+
+        self.store(f, c)
+        return f

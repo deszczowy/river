@@ -32,8 +32,7 @@ Remember:
 - project properties dialog
 
 ### Build
-- texts in '[' and ']' will be presented as todo's
-- special directory 'build' for build resutls in project location
+- todos section
 
 ### Keys
 - [Esc] - Main menu

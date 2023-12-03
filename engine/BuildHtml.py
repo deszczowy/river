@@ -3,7 +3,7 @@ from engine.Container import Container
 from engine.Dictionary import Dictionary
 from engine.Note import Note
 
-class RProjectBuild(RHtml):
+class RProjectBuildHtml(RHtml):
 
     def __init__(self):
         super().__init__()
