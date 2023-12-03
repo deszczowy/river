@@ -1,4 +1,4 @@
-class Html:
+class RHtml:
 
     def __init__(self):
         self.template = ""
@@ -13,7 +13,7 @@ class Html:
     def get(self):
         return self.template
 
-class RMainTextHtml(Html):
+class RMainTextHtml(RHtml):
 
     def __init__(self):
         super().__init__()
