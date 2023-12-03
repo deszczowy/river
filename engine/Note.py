@@ -62,9 +62,3 @@ class Note:
         self.note = current
         if self.title == "":
             self.title = self.note[:20] + "..."
-        
-        print("Id: ", self.id)
-        print("Title: ", self.title)
-        print("Content: ", self.note)
-        print("Tags: ", self.tags)
-        print("Notices: ", self.notices)

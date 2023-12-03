@@ -126,7 +126,6 @@ class RMainWindow(QWidget):
             result = EnPrintSource.SideNotes
         elif self.tabs.currentIndex() == 2:
             result = EnPrintSource.Build
-        print("Focus check {0}".format(result))
         return result
 
     def open_new_action(self, path):

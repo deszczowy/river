@@ -38,7 +38,6 @@ class RPrintDialog(QDialog):
         return frame
 
     def select(self, which):
-        print("Input select {0}".format(which))
         self.selected = which
         if which == EnPrintSource.MainText:
             self.radio_button_main.setChecked(True)
@@ -54,10 +53,8 @@ class RPrintDialog(QDialog):
             self.selected = EnPrintSource.SideNotes
         elif self.radio_button_make.isChecked():
             self.selected = EnPrintSource.Build
-        print(selected)
 
     def get_value(self):
-        print("Result value {0}".format(self.selected))
         return self.selected
 
     def build_window(self):

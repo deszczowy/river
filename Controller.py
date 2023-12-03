@@ -51,13 +51,11 @@ class RController:
             mainText = self.view.get_main_content()
             self.project.set(EnProjectFile.Flow, mainText)
             saved = True
-            print("Main")
         
         if self.view.is_modified(EnProjectFile.Note):
             sideNote = self.view.get_side_content()
             self.project.set(EnProjectFile.Note, sideNote)
             saved = True
-            print("Note")
 
         # Finalisation
         if saved:
@@ -123,7 +121,6 @@ class RController:
 
             if data.new:
                 self.project.update_header_file(data.title, data.author, data.description)
-                print("New project created")
     
     def run_print(self):
         """
@@ -136,8 +133,6 @@ class RController:
         # Calling print dialog with build path
         data = self.view.print_action(path)
         if data != None:
-            print("Printing {0}".format(data))
-
             build = RBuild(path)
             build.print_main_text(self.view.get_main_content())
 

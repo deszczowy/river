@@ -18,9 +18,7 @@ class RStatusBar(QWidget):
             self.panels[panel_name].setText(content)
         
     def load(self):
-        print("Loading panels")
         for panel in self.panels:
-            print(panel)
             self.layout.addWidget(self.panels[panel])
 
     def add_panel(self, name, textAlign = 'L', width = 0):

@@ -12,7 +12,3 @@ class REngine:
     
     def test(self, content):
         self.container = Container(content)
-
-        doc = RProjectBuild()
-        doc.build(self.container)
-        print(doc.get())

@@ -42,8 +42,5 @@ class RBuild:
         f = os.path.join(self.root, self.buildout)
         c = bf.get()
 
-        print(f)
-        print(c)
-
         self.store(f, c)
         return f

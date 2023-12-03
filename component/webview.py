@@ -10,7 +10,6 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
 class CustomWebPage(QWebEnginePage):
     def acceptNavigationRequest(self, url, _type, isMainFrame):
         if _type == QWebEnginePage.NavigationTypeLinkClicked:
-            print("Link clicked (prevented navigation):", url.toString())
             return False
         return super().acceptNavigationRequest(url, _type, isMainFrame)
         
