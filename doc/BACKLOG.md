@@ -22,7 +22,7 @@ Remember:
 - alarm to set if you want to be inform when to stop writing session
 
 ### UI
-- (left) main menu. [Esc] key, button maybe. Simple with buttons, actions on keys. Buttons with pointer cursor and hover - simple and weby vibe. Option name + key
+- main menu items - option name + key
 - statusbar center panel - description for menu, sidenote and preview
 - statusbar left panel - project name + "#"'s count
 - options dialog
@@ -35,12 +35,12 @@ Remember:
 - todos section
 
 ### Keys
-- [Esc] - Main menu
+- * [Esc] - Main menu
 - [F1] - Help
 - * [F2] - Open dialog
 - [F3] - Saving as new project dialog
 - * [F4] - Print
-- [F5] - Build
+- * [F5] - Build
 - * [F6] - Toggle side
 - * [F7] - Toggle fullscreen
 - [F8] - Options dialog
@@ -52,7 +52,6 @@ Remember:
 
 ### Processes and notes
 - F10 - F12 slots can be free if themes will be triggered in chain on F9 key, starting from dark, to custom and so on
-- view classes should have middleclasses to set/get data. Connectors
 - how to get into config dirctory linux/windows
 - deb packaging
 

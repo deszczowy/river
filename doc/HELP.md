@@ -6,6 +6,8 @@
 - [F4] - Open print dialog, in wchich you can choose to print main flow, side notes or cards
 - [F6] - Toggle side notes panel
 - [F7] - Toggle fullscreen
+
+- [Esc] - Main menu
 - [Ctrl + S] - Projects are autosaved, but use this to save on demand
 
 ## Syntax

@@ -5,3 +5,4 @@
 - Main document printing
 - Fullscreen mode
 - Two editors, one for main text, and one for side notes
+- Build feature, where main text is presented in form of series of cards

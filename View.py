@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTabWidget, QDialog, QPushButton
-from Components import REditorConnector, RSideNoteConnector, RStatusBar, RHtmlViewer
+from Components import RMenuConnector, REditorConnector, RSideNoteConnector, RStatusBar, RHtmlViewer
 from style import * # to Core module import
 from Dialogs import ROpenSaveDialog, RPrintDialog
 from Enums import EnPrintSource, EnProjectFile
@@ -46,6 +46,7 @@ class RMainWindow(QWidget):
 
         # building additional components
         self.sidenote = RSideNoteConnector(self)
+        self.menu = RMenuConnector(self)
         
         # prepare styling
         self.load_fonts()
@@ -63,7 +64,7 @@ class RMainWindow(QWidget):
 
     def build_header(self):
         self.header = QWidget(self)
-        self.menu_button = self.create_button("menu", None)
+        self.menu_button = self.create_button("menu", self.toggle_menu)
         self.alarm_button = self.create_button("a", None)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -114,6 +115,12 @@ class RMainWindow(QWidget):
         else:
             self.sidenote.hide()
             self.editor.set_focus()
+
+    def toggle_menu(self):
+        if self.menu.isHidden():
+            self.menu.show()
+        else:
+            self.menu.hide()
 
     def load_style(self):
         self.setStyleSheet(stylesheet)

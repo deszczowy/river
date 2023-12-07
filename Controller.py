@@ -18,6 +18,7 @@ class RController:
 
         self.bind_actions()
         self.bind_shortcuts()
+        self.bind_menu_actions()
 
     def load_project_object(self):
         """
@@ -141,6 +142,9 @@ class RController:
 
     def run_sidenote_toggle(self):
         self.view.toggle_sidenote()
+    
+    def run_menu_toggle(self):
+        self.view.toggle_menu()
 
     def run_on_close(self):
         self.save()
@@ -177,6 +181,7 @@ class RController:
         """
         The only one method to bind all shortcuts with coresponding actions
         """
+        self.shortCutMenu = QShortcut(QKeySequence("Esc"), self.view)
         self.shortcutSave = QShortcut(QKeySequence("Ctrl+S"), self.view)
         self.shortcutOpenNew = QShortcut(QKeySequence("F2"), self.view)
         self.shortCutPrint = QShortcut(QKeySequence("F4"), self.view)
@@ -184,6 +189,7 @@ class RController:
         self.shortCutSideNote = QShortcut(QKeySequence("F6"), self.view)
         self.shortCutFullscreen = QShortcut(QKeySequence("F7"), self.view)
 
+        self.shortCutMenu.activated.connect(self.run_menu_toggle)
         self.shortcutSave.activated.connect(self.save)
         self.shortcutOpenNew.activated.connect(self.run_new_open)
         self.shortCutPrint.activated.connect(self.run_print)
@@ -194,4 +200,7 @@ class RController:
         self.shortCutTest = QShortcut(QKeySequence("Ctrl+Q"), self.view)
         self.shortCutTest.activated.connect(self.run_test)
 
-    
+    def bind_menu_actions(self):
+        self.view.menu.on_build = self.run_build
+        self.view.menu.on_print = self.run_print
+        self.view.menu.on_fullscreen = self.run_fullscreen_toggle
