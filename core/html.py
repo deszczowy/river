@@ -6,9 +6,13 @@ class RHtml:
     def paragraph(self, content):
         return '<p>' + content + '</p>'
 
-    def form(self, params):
+    def fill_template(self, template, params):
         for anchor, content in params.items():
-            self.template = self.template.replace(anchor, content)
+            template = template.replace(anchor, content)
+        return template
+
+    def form(self, params):
+        self.template = self.fill_template(self.template, params)
 
     def get(self):
         return self.template
