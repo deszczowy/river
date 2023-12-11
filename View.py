@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QTabWidget, QDialog, QPushButton
-from Components import RMenuConnector, REditorConnector, RSideNoteConnector, RStatusBar, RHtmlViewer
+from Components import RMenuConnector, REditorConnector, RSideNoteConnector, RStatusBar, RPreviewConnector
 from style import * # to Core module import
 from Dialogs import ROpenSaveDialog, RPrintDialog
 from Enums import EnPrintSource, EnProjectFile
@@ -17,11 +17,11 @@ class RMainWindow(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        # building tabs
+        # building pages
         self.editor = REditorConnector(self)
-        self.preview = RHtmlViewer(self)
+        self.preview = RPreviewConnector(self)
         
-        # building top bar
+        # building widgets
         self.build_header()
 
         # building tab view
@@ -154,10 +154,10 @@ class RMainWindow(QWidget):
             return dialog.get_value()
         return None
 
-    def show_build_action(self, build_file):
+    def show_build_action(self, build_file, tags):
         index = self.tabs.currentIndex()
         if index == 0:
-            self.preview.load(build_file)
+            self.preview.load_build(build_file, tags)
             self.tabs.setCurrentIndex(1)
         else:
             self.tabs.setCurrentIndex(0)

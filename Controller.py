@@ -162,10 +162,10 @@ class RController:
 
         # Building
         build = RBuild(path)
-        output = build.build_flow(flow)
+        output, tags = build.build_flow(flow)
 
         # Show result
-        self.view.show_build_action(output)
+        self.view.show_build_action(output, tags)
     
     def run_test(self):
         c = self.view.get_main_content()

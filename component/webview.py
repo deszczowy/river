@@ -20,6 +20,8 @@ class RHtmlViewer(QWidget):
         self.browser = QWebEngineView(self)
         self.browser.setPage(CustomWebPage(self))
         viewer_layout = QVBoxLayout()
+        viewer_layout.setContentsMargins(0, 0, 0, 0)
+        viewer_layout.addSpacing(0)
         viewer_layout.addWidget(self.browser)
         self.setLayout(viewer_layout)
     

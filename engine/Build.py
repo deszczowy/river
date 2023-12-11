@@ -43,4 +43,4 @@ class RBuild:
         c = bf.get()
 
         self.store(f, c)
-        return f
+        return (f, container.tags)
