@@ -122,7 +122,7 @@ class ROpenSaveDialog(QDialog):
         self.project_list.clear()
         if os.path.isdir(directory):
             for item in os.listdir(directory):
-                if os.path.isdir(os.path.join(directory, item)):
+                if not item.startswith(".") and os.path.isdir(os.path.join(directory, item)):
 
                     sub_directory = os.path.join(directory, item)
                     list_item = QListWidgetItem()
